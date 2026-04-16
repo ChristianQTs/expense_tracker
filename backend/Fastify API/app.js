@@ -1,9 +1,10 @@
 
 import Fastify from 'fastify'
 import cors from '@fastify/cors'
-import 'dotenv/config'
 import { expensesRoutes } from './expensesRoutes.js'
+import 'dotenv/config'
 const port = process.env.PORT || 3001
+
 const app = Fastify({ logger: false })
 await app.register(cors, { origin: 'http://localhost:5173', methods: ['GET', 'POST', 'PATCH', 'DELETE']})
 //register expenses plugin
@@ -22,5 +23,5 @@ app.listen({ port }, function (err) {
     if (err) {
         return app.log.error(err)
     }
-    console.log(`Server listening on port ${port}`)
+    console.log(`Fastify API started, server listening on port ${port}`)
 })
