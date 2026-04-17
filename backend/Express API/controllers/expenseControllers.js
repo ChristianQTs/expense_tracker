@@ -1,5 +1,5 @@
 import { expenses_table, updateId } from '../../expenses_array.js'
-import prisma from '../../prisma/prismaClient.js'
+import prisma from '../../prisma/prismaClient.ts'
 export async function getUser(req, res) {
 
     const user_id = parseInt(req.params.user_id,10)
