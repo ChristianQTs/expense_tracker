@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "expense_tracker_frontend",
+  "name": "expense_tracker_backend",
   "version": "1.0.0",
   "main": "expenses_array.js",
   "scripts": {

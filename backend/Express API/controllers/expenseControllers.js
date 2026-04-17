@@ -1,17 +1,20 @@
 import { expenses_table, updateId } from '../../expenses_array.js'
-export function getAllExpenses(req, res) {
+import prisma from '../../prisma/prismaClient.js'
+export async function getUser(req, res) {
 
-    const user = parseInt(req.params.user_id,10)
+    const user_id = parseInt(req.params.user_id,10)
 
-    const userExpenses = expenses_table.filter(e => e.user_id === user)
+    const user = await prisma.users.findUnique({
+        where: {id : user_id}
+    })
 
-    if (userExpenses.length === 0) {
+    if (!user) {
 
-        return res.status(404).json({ message: 'No expense found.' })
+        return res.status(404).json({ message: 'User not found.' })
         
     }
 
-    res.status(200).json({ data: userExpenses })
+    res.status(200).json({ data: user })
 
 }
 
